@@ -4654,3 +4654,5 @@ data/shotdetect/libxslt/libxslt-1.1.34/xsltproc/xsltproc
 data/shotdetect/libxslt/libxslt-1.1.34/xsltproc/xsltproc.c
 data/shotdetect/libxslt/libxslt-1.1.34/xsltproc/xsltproc.o
 data/shotdetect/libxslt/libxslt_1.1.34.orig.tar.gz
+data/shotdetect/shotdetect/
+data/shotdetect/pkg-config/
