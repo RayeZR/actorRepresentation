@@ -82,7 +82,8 @@ def main(command, inp_dir, out_dir, expand=1.2):
                 res_person["on_screen_area"] = cal_on_screen_area(pose_kpts, face_kpts)
                 res["frames"][frame_id]["person_%02d" % i] = res_person
         frame_id += 1
-    out_name = out_dir + os.sep + "pose-openpose-%s-raw.json" % os.path.basename(inp_dir)
+    # out_name = out_dir + os.sep + "pose-openpose-%s-raw.json" % os.path.basename(inp_dir)
+    out_name = out_dir + os.sep + "pose-openpose-raw.json"
     print(out_name, "has been generated.")
     with open(out_name, 'w+') as write_f:
         json.dump(res, write_f)
@@ -101,7 +102,7 @@ if __name__ == '__main__':
     expand = args["expand"]
     command = args["cmd"]
     if out_dir == "":
-        out_dir = inp_folder + os.sep + ".."
+        out_dir = inp_folder + os.sep + "../.."
 
     main(command, inp_folder, out_dir, expand)
 

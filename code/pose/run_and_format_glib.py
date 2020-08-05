@@ -6,19 +6,20 @@ import os
 import json
 
 """
-res = {"command": "bash pose_batch.sh tool inp_dir out_dir param"
-       "toolname": "Glib",
-       "pose_kpts_id": POSE_BODY_25_BODY_PARTS, 
+res = {"command": "bash pose_batch.sh tool inp_dir out_dir param"  
+       "toolname": "Glib",                                
+       "pose_kpts_id": POSE_BODY_25_BODY_PARTS,                   
        "frames":
-           {0: {"person_00": {"on_screen_area": 11.22, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}, 
+           {"0": {"person_00": {"on_screen_area": 11.22, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}, 
                 "person_01": {"on_screen_area": 23.34, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}
-                },
-            1: {"person_00": {"on_screen_area": 3.561, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}, 
+                },                                                 
+            "1": {"person_00": {"on_screen_area": 3.561, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}, 
                 "person_01": {"on_screen_area": 23.53, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}},
                 "person_02": {"on_screen_area": 123.34, "pose_kpts": {0: [], 1: [], ...}, "face_kpts": {0: [], 1: [], ...}}
                 },
-            2: {...},
-            3: {...},
+            "2": {...},
+            "3": {},
+            "4": {...},
             ...
            }
        }
@@ -72,7 +73,8 @@ def detect(command, detector, predictor, filename, out_vid_dir, out_json_dir):
         ret, frame = cap.read()
         frame_id += 1
 
-    out_json_name = out_json_dir + os.sep + "pose-glib-%s-raw.json" % basename
+    # out_json_name = out_json_dir + os.sep + "pose-glib-%s-raw.json" % basename
+    out_json_name = out_json_dir + os.sep + "pose-glib-raw.json"
     with open(out_json_name, 'w+') as write_f:
         json.dump(res, write_f)
 
