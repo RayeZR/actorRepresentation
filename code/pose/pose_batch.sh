@@ -8,7 +8,7 @@ command="bash pose_batch.sh "$*
 echo $command
 
 if [ ! -d "$out_dir" ]; then
-  mkdir $out_dir
+  mkdir -p $out_dir
 fi
 
 for file in `ls $inp_dir`
@@ -16,7 +16,7 @@ do
   filename=$(echo $file | cut -d . -f1)
   raw_output_dir=${out_dir}/${filename}/"raw_output"/${tool}
   if [ ! -d ${raw_output_dir} ]; then
-    mkdir -r ${raw_output_dir}
+    mkdir -p ${raw_output_dir}
   fi
 
   if [ $tool == "openpose" ]; then
@@ -43,7 +43,7 @@ do
     fi
     echo "Using model $model"
     echo "python3 run_and_format_glib.py --predictor $model --input_file ${inp_dir}/${file} --out_vid_dir ${raw_output_dir}/$filename"-glib-raw.avi" --out_json_dir ${out_dir}/${filename} --cmd $command"
-    python3 run_and_format_glib.py --predictor $model --input_file ${inp_dir}/${file} --out_vid_dir ${raw_output_dir}/${filename}"-glib-raw.avi" --out_json_dir ${out_dir}/${filenmae} --cmd "$command"
+    python3 run_and_format_glib.py --predictor $model --input_file ${inp_dir}/${file} --out_vid_dir ${raw_output_dir}/${filename}"-glib-raw.avi" --out_json_dir ${out_dir}/${filename} --cmd "$command"
   fi
 
 done

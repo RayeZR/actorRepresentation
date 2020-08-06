@@ -64,7 +64,6 @@ def detect(command, detector, predictor, filename, out_vid_dir, out_json_dir):
             cv2.putText(frame, "Face #{}".format(i + 1), (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
             for (kpt_id, (x, y)) in enumerate(shape):
                 res_person["face_kpts"][kpt_id] = [int(x), int(y), -1]
-                #print(x.dtype, y.dtype)
                 #print(x, y)
                 cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
             res["frames"][frame_id]["person_%02d" % i] = res_person

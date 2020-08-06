@@ -51,7 +51,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--inp_file", required=True, help="path to openpose output json files")
     parser.add_argument("--out_dir", default="", help="path to output json file")
-    parser.add_argument("--threshold", requried=True, help="threshold")
+    parser.add_argument("--threshold", required=True, help="threshold")
     parser.add_argument("--cmd", required=True, help="Command used to generate the raw output")
 
     args = vars(parser.parse_args())
