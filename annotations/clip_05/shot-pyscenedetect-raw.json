@@ -1,0 +1,1 @@
+{"command": "bash shot_batch.sh pyscenedetect ../../dataset ../../annotations", "toolname": "PySceneDetect", "params": {"threshold": "30"}, "shots": {"0": {"start_frame_id": 0, "end_frame_id": 1863, "prev_trans": "", "next_trans": ""}}}
