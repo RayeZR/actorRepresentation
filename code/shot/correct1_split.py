@@ -90,7 +90,7 @@ class Solver:
 if __name__ == '__main__':
     # inp_file = r'E:\I3S\actorRepresentation\data\PySceneDetect\03\03-Scene-008.mp4'
     # inp_file = r'E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\split_raw\057.avi'
-    inp_file = r"E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\split_raw\087_00.avi"
+    inp_file = r"E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\split_raw\047_00_01.avi"
     out_dir = os.path.dirname(inp_file)
     # num_bin = 16
     num_bin = 256

@@ -81,5 +81,24 @@ E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\clip_02-
 --cmd
 "scenedetect -i clip_01.mp4 detect-content -t 20 list-scenes -o ./"
 
+--inp_file
+E:\I3S\actorRepresentation\annotations\clip_03\raw_output\pyscenedetect\clip_03-Scenes.csv
+--threshold
+30
+--cmd
+"scenedetect -i clip_03.mp4 detect-content -t 30 list-scenes -o ./"
 
+--inp_file
+E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\clip_04-Scenes.csv
+--threshold
+30
+--cmd
+"scenedetect -i clip_04.mp4 detect-content -t 30 list-scenes -o ./"
+
+--inp_file
+E:\I3S\actorRepresentation\annotations\clip_05\raw_output\pyscenedetect\clip_05-Scenes.csv
+--threshold
+10
+--cmd
+"scenedetect -i clip_05.mp4 detect-content -t 10 list-scenes -o ./"
 """

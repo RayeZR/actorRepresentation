@@ -91,5 +91,12 @@ E:\I3S\actorRepresentation\annotations\clip_02\shot-pyscenedetect-raw.json
 E:\I3S\actorRepresentation\dataset\clip_02.mp4
 --tool
 pyscenedetect
+
+--inp_json
+E:\I3S\actorRepresentation\annotations\clip_03\shot-pyscenedetect-raw.json
+--inp_vid
+E:\I3S\actorRepresentation\dataset\clip_03.mp4
+--tool
+pyscenedetect
 """
 
