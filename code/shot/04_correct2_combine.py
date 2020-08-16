@@ -1,3 +1,10 @@
+"""
+Combine the wrongly split shots into a whole one.
+Example command: python correct2_combine.py --inp_dir E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\split_raw
+--combine "001 002 003 004 005 006 007, 047_00_00 047_00_01_00, 047_00_01_01 047_00_02 047_01 048"
+(The shots to be combined are separated by ' ', and use ',' to separate multiple output clips)
+"""
+
 import cv2
 import os
 import argparse
@@ -40,6 +47,7 @@ if __name__ == '__main__':
     combine(inp_dir, inp_list)
 
 """
+params used:
 --inp_dir
 E:\I3S\actorRepresentation\annotations\clip_01\raw_output\pyscenedetect\split_raw
 --combine
@@ -55,4 +63,8 @@ E:\I3S\actorRepresentation\annotations\clip_03\raw_output\pyscenedetect\split_ra
 --combine
 "007_00_00 007_00_01 007_00_02 007_00_03 007_00_04 007_00_05_00_00 007_00_05_00_01_00 007_00_05_00_01_01, 007_00_05_00_01_02 007_00_05_01 007_01, 038 039"
 
+--inp_dir
+E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\split_raw
+--combine
+"001 002 003 004 005 006 007, 047_00_00 047_00_01_00, 047_00_01_01 047_00_02 047_01 048"
 """

@@ -1,3 +1,9 @@
+"""
+Generate corrected shot-corrected-raw.json using the corrected shots, by reading and combining them into one.
+Example command: python gen_corrected.py --inp_dir E:\I3S\actorRepresentation\annotations\clip_06\raw_output\pyscenedetect\split_raw \
+--tool pyscenedetect
+"""
+
 import argparse
 import os
 import cv2

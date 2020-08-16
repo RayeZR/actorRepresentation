@@ -1,7 +1,15 @@
+"""
+Split the unsplit clips of the raw output of the tools manually using the similarity of color histogram of the frames.
+Cluster the frames into a certain number of shots (viewed in advance).
+
+Example command: python correct1_split.py --inp_file E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\split_raw\057.avi \
+--nums 3
+"""
+
+import argparse
 import cv2
 import os
 import numpy as np
-import copy
 
 
 class Solver:
@@ -37,7 +45,6 @@ class Solver:
             self.features.append(hist)
             ret, frame = self.cap.read()
         print(len(self.features))
-        # self.features.pop(-1) # remove the last frame
 
     def split_shots(self, num_center):
         criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
@@ -63,18 +70,15 @@ class Solver:
         ret, frame = self.cap.read()
         i = 0
         info = '00.avi: '
-        cnt = 0
         while frame is not None:
             if self.labels[i] == label:
                 writer.write(frame)
-                cnt += 1
                 info += '%d ' % self.labels[i]
             else:
                 idx += 1
                 writer.release()
                 writer = cv2.VideoWriter(os.path.join(out_dir, self.filename) + '_%02d.avi' % idx, self.fourcc, self.fps, (self.width, self.height))
                 writer.write(frame)
-                cnt += 1
                 print(info)
                 info = '%02d.avi: %d ' % (idx, self.labels[i])
             label = self.labels[i]
@@ -83,18 +87,30 @@ class Solver:
 
             ret, frame = self.cap.read()
         writer.release()
-        # print(cnt)
+
 
 
 
 if __name__ == '__main__':
-    # inp_file = r'E:\I3S\actorRepresentation\data\PySceneDetect\03\03-Scene-008.mp4'
-    # inp_file = r'E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\split_raw\057.avi'
-    inp_file = r"E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\split_raw\047_00_01.avi"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--inp_file", required=True, help="the video clip to be split")
+    parser.add_argument("--nums", required=True, help="split number (number of the shots)")
+    parser.add_argument("--num_bin", default=256, help="number of the bins for the color histogram")
+
+    args = vars(parser.parse_args())
+    inp_file = args["inp_file"]
+    num_center = args["nums"]
+    num_bin = args["num_bin"]
     out_dir = os.path.dirname(inp_file)
-    # num_bin = 16
-    num_bin = 256
-    num_center = 2
+
+    # # inp_file = r'E:\I3S\actorRepresentation\data\PySceneDetect\03\03-Scene-008.mp4'
+    # # inp_file = r'E:\I3S\actorRepresentation\annotations\clip_02\raw_output\pyscenedetect\split_raw\057.avi'
+    # inp_file = r"E:\I3S\actorRepresentation\annotations\clip_04\raw_output\pyscenedetect\split_raw\047_00_01.avi"
+    # out_dir = os.path.dirname(inp_file)
+    # # num_bin = 16
+    # num_bin = 256
+    # num_center = 2
+
     solver = Solver(inp_file)
     solver.get_hist(num_bin)
     solver.split_shots(num_center)

@@ -44,7 +44,7 @@ do
     echo "scenedetect -i ${inp_dir}/${file} detect-content -t $threshold list-scenes -o ${raw_output_dir} split-video -o ${raw_output_dir}"
     scenedetect -i ${inp_dir}/${file} detect-content -t $threshold list-scenes -o ${raw_output_dir} split-video -o ${raw_output_dir}
 
-    echo "python3 format_raw_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}'-Scenes.csv' --threshold $threshold --cmd $command"
+    echo "python3 01_format_raw_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}'-Scenes.csv' --threshold $threshold --cmd $command"
     python3 format_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}"-Scenes.csv" --threshold $threshold --cmd "$command"
   fi
 done

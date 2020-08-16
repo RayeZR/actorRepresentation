@@ -1,3 +1,8 @@
+"""
+Split the original input video clip into shots according to the shot-tool-raw.json. For checking and correction.
+Example commands are recorded at the end of the script.
+"""
+
 import argparse
 import os
 import cv2
@@ -37,7 +42,6 @@ def split(inp_json, inp_vid, out_dir):
             cv2.putText(frame_cp, "shot #%d, frame #%d" % (shot_idx, frame_idx), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
             writer.write(frame)
 
-        # print(frame_idx)
 
         # cv2.imshow("vid", frame_cp)
         # try:
@@ -78,25 +82,14 @@ if __name__ == "__main__":
 
 
 """
---inp_json
-E:\I3S\actorRepresentation\annotations\clip_01\shot-pyscenedetect-raw.json
---inp_vid
-E:\I3S\actorRepresentation\dataset\clip_01.mp4
---tool
-pyscenedetect
+input examples: (commands used to generate the outputs)
+--inp_json E:\I3S\actorRepresentation\annotations\clip_01\shot-pyscenedetect-raw.json --inp_vid \
+E:\I3S\actorRepresentation\dataset\clip_01.mp4 --tool pyscenedetect
 
---inp_json
-E:\I3S\actorRepresentation\annotations\clip_02\shot-pyscenedetect-raw.json
---inp_vid
-E:\I3S\actorRepresentation\dataset\clip_02.mp4
---tool
-pyscenedetect
+--inp_json E:\I3S\actorRepresentation\annotations\clip_02\shot-pyscenedetect-raw.json --inp_vid \
+E:\I3S\actorRepresentation\dataset\clip_02.mp4 --tool pyscenedetect
 
---inp_json
-E:\I3S\actorRepresentation\annotations\clip_03\shot-pyscenedetect-raw.json
---inp_vid
-E:\I3S\actorRepresentation\dataset\clip_03.mp4
---tool
-pyscenedetect
+--inp_json E:\I3S\actorRepresentation\annotations\clip_03\shot-pyscenedetect-raw.json --inp_vid \
+E:\I3S\actorRepresentation\dataset\clip_03.mp4 --tool pyscenedetect
 """
 

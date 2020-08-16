@@ -1,10 +1,28 @@
+"""
+This script is used to process the raw output of the tool ffprobe at the very beginning, and generate our desired
+shot-pyscenedetect-raw.json. Expected output are as the following format:
+
+res = {"command": "bash shot_batch.sh ffprobe ../../dataset ../../annotation 0.3",
+       "toolname": "ffprobe",
+       "params": {"threshold": threshold},
+       "shots":
+           {"0": {"start_frame_id": 000000, "end_frame_id": 000093, "prev_trans": "", "next_trans": ""},
+            "1": {"start_frame_id": 000094, "end_frame_id": 000165, "prev_trans": "", "next_trans": ""},
+            "2": {...},
+            "3": {...},
+            ...
+           }
+       }
+
+Example commands are recorded at the end of the script (which are the ones used to generate the shot-tool-raw.json files).
+"""
+
 import argparse
 import os
 import json
 import csv
 import cv2
 
-#
 
 """
 res = {"command": "bash shot_batch.sh ffprobe ../../dataset ../../annotation 0.3",
@@ -78,3 +96,14 @@ if __name__ == '__main__':
         out_dir = os.path.dirname(inp_file) + os.sep + "../.."
 
     main(command, inp_vid, inp_file, out_dir, threshold)
+
+"""
+--inp_vid
+E:\I3S\actorRepresentation\dataset\clip_01.mp4
+--inp_file
+E:\I3S\actorRepresentation\annotations\clip_01\raw_output\ffprobe\clip_01.txt
+--threshold
+0.15
+--cmd
+"ffprobe -show_frames -of csv=s=,:nk=0 -f lavfi 'movie=clip_01.mp4, select=gt(scene\,0.3)' > clip_01.txt 2>&1"
+"""
