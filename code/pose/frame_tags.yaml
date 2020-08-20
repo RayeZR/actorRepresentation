@@ -1,0 +1,35 @@
+# Tagged output items of frame-level annotations.
+
+# General information of the frame.
+FRAME-HEAD:
+  shot-id:
+  no-character:
+  single-character:
+  two-shot:
+  three-shot:
+  crowd-shot:
+
+# Shot boundary information of the frame.
+SHOT-BOUNDARY:
+  precede-transition:
+  follow-transition:
+  in-transition:
+
+# Pose information of the characters in the frame.
+POSE-BASE:
+  size-closeup:
+  size-medium:
+  size-long:
+  female:
+  male:
+  gender-unknown:
+  face-forward:
+  face-backward:
+  perspective-high:
+  perspective-low:
+  head-detected:
+  head-not-detected:
+  legs-detected:
+  legs-not-detected:
+
+

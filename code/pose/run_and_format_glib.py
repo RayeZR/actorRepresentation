@@ -54,8 +54,11 @@ def detect(command, detector, predictor, filename, out_vid_dir, out_json_dir):
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
         for (i, rect) in enumerate(rects):
+            # res_person = {"on_screen_area": -1,
+            #               "pose_kpts": dict(zip([idx for idx in range(25)], [[-1, -1, -1] * 25])),
+            #               "face_kpts": {}}
             res_person = {"on_screen_area": -1,
-                          "pose_kpts": dict(zip([idx for idx in range(25)], [[-1, -1, -1] * 25])),
+                          "pose_kpts": {},
                           "face_kpts": {}}
             shape = predictor(gray, rect)
             shape = face_utils.shape_to_np(shape)

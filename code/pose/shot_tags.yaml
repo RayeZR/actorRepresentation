@@ -1,0 +1,23 @@
+# Tagged output items of shot-level annotations.
+
+# Shot boundary information of the shot.
+SHOT-BOUNDARY:
+  duration-1s: None
+  duration-2s: None
+  duration-3s: None
+  duration-5s: None
+  duration-medium: None
+  duration-long: None
+  duration-very-long: None
+  precede-cut: None
+  follow-cut: None
+  precede-other: None
+  follow-other: None
+
+# Pose information of the characters in the shot.
+POSE-BASE:
+  enters: None
+  exits: None
+  stands: None
+  sits: None
+  walks: None
