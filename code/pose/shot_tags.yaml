@@ -1,4 +1,4 @@
-# Tagged output items of shot-level annotations.
+# Tagged output items of shot-level annotations. The items are originally left all None.
 
 # Shot boundary information of the shot.
 SHOT-BOUNDARY:

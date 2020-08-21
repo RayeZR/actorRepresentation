@@ -1,4 +1,4 @@
-# Tagged output items of frame-level annotations.
+# Tagged output items of frame-level annotations. The items are originally left all None.
 
 # General information of the frame.
 FRAME-HEAD:
