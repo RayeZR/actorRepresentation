@@ -7,8 +7,8 @@ import json
 import time
 
 '''
-res = {"0": {"RGBL-all-ave": [[1x256], [1x256], [1x256], [1x256]], "RGBL-all-peak": [1, 1, 1, 1],
-             "RGBL-UL-ave":  [[1x256], [1x256], [1x256], [1x256]], "RGBL-UL-peak":  [2, 1, 4, 5],
+res = {"0": {"RGBL-all-ave": [1, 3, 3, 2], "RGBL-all-peak": [5, 6, 6, 4],
+             "RGBL-UL-ave":  [3, 4, 1, 2], "RGBL-UL-peak":  [6, 8, 3, 5],
              "RGBL-UC-ave":  ..., "RGBL-UC-peak": ...,
              ...
              "RGBL-C-ave":   ..., "RGBL-C-peak": ...,

@@ -2,22 +2,22 @@
 
 # Shot boundary information of the shot.
 SHOT-BOUNDARY:
-  duration-1s: None
-  duration-2s: None
-  duration-3s: None
-  duration-5s: None
-  duration-medium: None
-  duration-long: None
-  duration-very-long: None
-  precede-cut: None
-  follow-cut: None
-  precede-other: None
-  follow-other: None
+  duration-1s:
+  duration-2s:
+  duration-3s:
+  duration-5s:
+  duration-medium:
+  duration-long:
+  duration-very-long:
+  precede-cut:
+  follow-cut:
+  precede-other:
+  follow-other:
 
 # Pose information of the characters in the shot.
 POSE-BASE:
-  enters: None
-  exits: None
-  stands: None
-  sits: None
-  walks: None
+  enters:
+  exits:
+  stands:
+  sits:
+  walks:
