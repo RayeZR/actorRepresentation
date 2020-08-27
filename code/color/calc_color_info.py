@@ -1,3 +1,10 @@
+"""
+This is the revised script to save the peak and average color information of the frames.
+
+Example command: python calc_color_info.py --inp_dir E:\I3S\actorRepresentation\dataset --out_dir \
+E:\I3S\actorRepresentation\annotations
+"""
+
 import argparse
 import os
 import cv2
@@ -23,10 +30,9 @@ res = {"0": {"RGBL-all-ave": [1, 3, 3, 2], "RGBL-all-peak": [5, 6, 6, 4],
 
 
 class SaveColorInfo:
-    def __init__(self, inp_dir, out_dir, num_bins):
+    def __init__(self, inp_dir, out_dir):
         self.inp_dir = inp_dir
         self.out_dir = out_dir
-        self.num_bins = num_bins
         self.filelist = os.listdir(self.inp_dir)
 
     def cal_hist(self, frame, mask):
@@ -156,17 +162,15 @@ class SaveColorInfo:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--inp_dir", required=True, help="facial landmark predictor directory")
-    parser.add_argument("--out_dir", required=True, help="input file directory")
-    parser.add_argument("--num_bins", default=256, help="directory to output video")
+    parser.add_argument("--inp_dir", required=True, help="input video file")
+    parser.add_argument("--out_dir", required=True, help="directory to the output json file")
     args = vars(parser.parse_args())
 
     inp_dir = args["inp_dir"]
     out_dir = args["out_dir"]
-    num_bins = args["num_bins"]
 
     start = time.time()
-    solver = SaveColorInfo(inp_dir, out_dir, num_bins)
+    solver = SaveColorInfo(inp_dir, out_dir)
     solver.run()
     print(time.time() - start, "s in total.")
 

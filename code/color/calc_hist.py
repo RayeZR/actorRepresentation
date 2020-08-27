@@ -1,3 +1,7 @@
+"""
+This is the former script to save the color histogram information of the frames.
+"""
+
 import argparse
 import os
 import cv2
@@ -157,9 +161,9 @@ class SaveHistogram:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--inp_dir", required=True, help="facial landmark predictor directory")
-    parser.add_argument("--out_dir", required=True, help="input file directory")
-    parser.add_argument("--num_bins", default=256, help="directory to output video")
+    parser.add_argument("--inp_dir", required=True, help="input video file")
+    parser.add_argument("--out_dir", required=True, help="directory to the output json file")
+    parser.add_argument("--num_bins", default=256, help="number of bins to calculate the color histogram")
     args = vars(parser.parse_args())
 
     inp_dir = args["inp_dir"]
