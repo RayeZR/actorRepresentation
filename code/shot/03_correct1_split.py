@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
     solver = Solver(inp_file)
     solver.get_hist(num_bin)
-    solver.split_shots(num_center)
+    solver.split_shots(int(num_center))
     solver.correct_labels()
     solver.write(out_dir)
     # os.remove(inp_file)

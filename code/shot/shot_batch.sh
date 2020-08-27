@@ -31,8 +31,8 @@ do
     echo "ffprobe -show_frames -of csv=s=,:nk=0 -f lavfi 'movie=${inp_dir}/${file}, select=gt(scene\,${threshold})' > ${raw_output_dir}/${filename}.txt 2>&1"
     ffprobe -show_frames -of csv=s=,:nk=0 -f lavfi "movie=${inp_dir}/${file}, select=gt(scene\,${threshold})" > ${raw_output_dir}/${filename}".txt" 2>&1
 
-    echo "python3 format_ffprobe.py --inp_file ${raw_output_dir}/${filename}.txt --inp_vid ${inp_dir}/${file} --threshold $threshold --cmd $command"
-    python3 format_ffprobe.py --inp_file ${raw_output_dir}/${filename}.txt --inp_vid ${inp_dir}/${file} --threshold $threshold --cmd "$command"
+    echo "python3 01_format_ffprobe.py --inp_file ${raw_output_dir}/${filename}.txt --inp_vid ${inp_dir}/${file} --threshold $threshold --cmd $command"
+    python3 01_format_raw_ffprobe.py --inp_file ${raw_output_dir}/${filename}.txt --inp_vid ${inp_dir}/${file} --threshold $threshold --cmd "$command"
   fi
 
   if [ $tool == "pyscenedetect" ]; then
@@ -45,6 +45,6 @@ do
     scenedetect -i ${inp_dir}/${file} detect-content -t $threshold list-scenes -o ${raw_output_dir} split-video -o ${raw_output_dir}
 
     echo "python3 01_format_raw_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}'-Scenes.csv' --threshold $threshold --cmd $command"
-    python3 format_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}"-Scenes.csv" --threshold $threshold --cmd "$command"
+    python3 01_format_raw_pyscenedetect.py --inp_file ${raw_output_dir}/${filename}"-Scenes.csv" --threshold $threshold --cmd "$command"
   fi
 done
