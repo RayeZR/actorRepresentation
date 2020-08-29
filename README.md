@@ -2,7 +2,7 @@
 
 ### Workflow
 
-####1. Code requirements
+#### 1. Code requirements
 
 Dependencies for each tools (can be found in the tools part) + for the codes (`numpy`, `opencv-python`, `pyyaml`, `imutils`)
 
