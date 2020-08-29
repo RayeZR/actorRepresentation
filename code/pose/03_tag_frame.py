@@ -12,6 +12,7 @@ import argparse
 import os
 import json
 import yaml
+import cv2
 
 
 ORD = ["primary", "secondary"]
@@ -30,6 +31,17 @@ class SaveTag:
         f_shot.close()
         f_pose.close()
         f_conf.close()
+
+        basename = os.path.basename(inp_dir)
+        vid_file = inp_dir + os.sep + r"../../dataset/" + basename + ".mp4"
+        if not os.path.isfile(vid_file):
+            vid_file = vid_file.replace(".mp4", "_crop.avi")
+        if not os.path.isfile(vid_file):
+            vid_file = vid_file.replace("_crop.avi", ".avi")
+        vid = cv2.VideoCapture(vid_file)
+        [w, h] = [int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)), int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))]
+        vid.release()
+        self.area = w * h
 
 
     def initiate(self):
@@ -67,6 +79,26 @@ class SaveTag:
             self.res[frame_id]["three-shot"] = True
         else:
             self.res[frame_id]["crowd_shot"] = True
+
+
+    def update_size(self, frame_id, ord_dat):
+        # Update character size
+        for i, ord in enumerate(ORD):
+            try:
+                person = ord_dat[i][1]
+            except IndexError:
+                break
+            self.res[frame_id]["%s-size-closeup" % ord] = False
+            self.res[frame_id]["%s-size-medium" % ord] = False
+            self.res[frame_id]["%s-size-long" % ord] = False
+            person_area = person["on_screen_area"] / 1.44
+            ratio = person_area / self.area
+            if ratio > 0.4:
+                self.res[frame_id]["%s-size-closeup" % ord] = True
+            elif ratio > 0.2:
+                self.res[frame_id]["%s-size-medium" % ord] = True
+            else:
+                self.res[frame_id]["%s-size-long" % ord] = True
 
 
     def update_gender(self, frame_id, ord_dat):
@@ -157,6 +189,8 @@ class SaveTag:
 
             # tag the features wrt primary and secondary characters
             ordered_dat = sorted(dat.items(), key=lambda  d: d[1]["on_screen_area"])
+            if self.res[frame_id].__contains__("primary-size-closeup"):
+                self.update_size(frame_id, ordered_dat)
             if self.res[frame_id].__contains__("primary-gender-unknown"):
                 self.update_gender(frame_id, ordered_dat)
             if self.res[frame_id].__contains__("primary-face-forward"):
