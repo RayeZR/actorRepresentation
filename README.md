@@ -80,9 +80,12 @@ Dependencies for each tools (can be found in the tools part) + for the codes (`n
 #### **2. Dlib (or glib?)**
 
 - setup: `pip install dlib`
-
 - dependencies: some libraries: https://www.pyimagesearch.com/2017/03/27/how-to-install-dlib/ and `numpy` `scipy` `scikit-image` `imtuils` `opencv-python`
-
 - detector: download from here https://github.com/AKSHAYUBHAT/TensorFace/blob/master/openface/models/dlib/shape_predictor_68_face_landmarks.dat (the one provided by the instruction raises some error)
 - tutorial: https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/
 - usage and raw output processing have been integrated in `code/pose/01_run_and_format_glib.py`
+
+#### **3. *Higher-HRNet**
+
+- homepage: https://github.com/HRNet/HigherHRNet-Human-Pose-Estimation
+- example command: `python3 tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE models/pose_higher_hrnet_w32_512.pth TEST.FLIP_TEST False`
